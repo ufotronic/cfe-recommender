@@ -1,4 +1,4 @@
-src\data\movies_metadata.csv
+src/data/movies_metadata.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
