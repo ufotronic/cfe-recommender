@@ -2,6 +2,8 @@ from django.db import models
 
 from django.contrib.contenttypes.fields import GenericRelation
 
+from ratings.models import Rating
+
 # Create your models here.
 
 
@@ -11,4 +13,11 @@ class Movie(models.Model):
     release_date = models.DateField(blank=True, null=True, auto_now=False, auto_now_add=False )
     timestamp = models.DateTimeField(auto_now_add=True)
 
-    # rating = GenericRelation()
+    ratings = GenericRelation(Rating) # its a QuerySet
+
+
+    def calculate_ratings_count(self):
+        return self.ratings.all().count()
+    
+    def calculate_ratings_avg(self):
+        return self.ratings.all().avg()
